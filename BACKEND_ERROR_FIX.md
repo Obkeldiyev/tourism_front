@@ -59,7 +59,7 @@ The error `ENOENT: no such file or directory, open 'C:\Users\User\Desktop\touris
 ### **Image Loading Strategy:**
 ```typescript
 // 1. Try to load backend image
-src={`http://localhost:9000${tour.photos[0].url}`}
+src={`/api${tour.photos[0].url}`}
 
 // 2. If fails, fallback to placeholder
 onError={(e) => {

@@ -14,8 +14,8 @@
    ```
 
 3. **Access the Application**
-   - Frontend: http://localhost:8080
-   - Make sure your backend is running on http://localhost:9000
+   - Frontend: http://localhost:8081
+   - Make sure your backend is running on http://localhost:9001
 
 ## Backend Requirements
 
@@ -65,7 +65,7 @@ src/
 ## Environment Setup
 
 The frontend is configured to connect to:
-- Backend API: `http://localhost:9000`
+- Backend API: `http://localhost:9001`
 - Frontend Dev Server: `http://localhost:8080`
 
 If you need to change these URLs, update:

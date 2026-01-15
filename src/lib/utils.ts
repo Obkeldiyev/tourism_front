@@ -17,5 +17,5 @@ export function getImageUrl(relativePath: string | undefined | null): string {
   }
   
   // If it's a relative path, prepend the backend URL
-  return `http://localhost:9000${relativePath}`;
+  return `/api${relativePath}`;
 }

@@ -178,7 +178,7 @@ export const api = {
 1. **API Endpoints:**
    ```bash
    # Test booking creation
-   POST http://localhost:9000/bookings
+   POST /api/bookings
    {
      "tur_id": "tour-id",
      "full_name": "John Doe",
@@ -187,7 +187,7 @@ export const api = {
    }
    
    # Test admin booking list (requires token)
-   GET http://localhost:9000/bookings
+   GET /api/bookings
    Headers: { "token": "admin-token" }
    ```
 

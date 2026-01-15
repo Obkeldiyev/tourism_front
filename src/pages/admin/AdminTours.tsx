@@ -40,7 +40,7 @@ const AdminTours: React.FC = () => {
 
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
-      const response = await fetch(`http://localhost:9000/turs/${id}`, {
+      const response = await fetch(`/api/turs/${id}`, {
         method: 'DELETE',
         headers: {
           token: token || '',
@@ -165,7 +165,7 @@ const AdminTours: React.FC = () => {
                       <div className="w-16 h-16 rounded-lg bg-primary/10 flex items-center justify-center overflow-hidden">
                         {tour.photos && tour.photos[0] ? (
                           <img
-                            src={`http://localhost:9000${tour.photos[0].url}`}
+                            src={`/api${tour.photos[0].url}`}
                             alt={tour.title_en}
                             className="w-full h-full object-cover"
                             onError={(e) => {

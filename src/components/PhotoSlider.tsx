@@ -54,7 +54,7 @@ const PhotoSlider: React.FC<PhotoSliderProps> = ({
           {/* Main Image */}
           <div className="relative w-full h-full flex items-center justify-center">
             <img
-              src={`http://localhost:9000${photos[currentIndex].url}`}
+              src={`/api${photos[currentIndex].url}`}
               alt={`Photo ${currentIndex + 1}`}
               className="max-w-full max-h-full object-contain"
               onError={handleImageError}
@@ -105,7 +105,7 @@ const PhotoSlider: React.FC<PhotoSliderProps> = ({
                     }`}
                   >
                     <img
-                      src={`http://localhost:9000${photo.url}`}
+                      src={`/api${photo.url}`}
                       alt={`Thumbnail ${index + 1}`}
                       className="w-full h-full object-cover"
                       onError={handleImageError}

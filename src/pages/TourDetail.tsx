@@ -107,7 +107,7 @@ const TourDetail: React.FC = () => {
         {/* Hero Image */}
         <div className="relative h-[50vh] overflow-hidden group cursor-pointer" onClick={() => openPhotoSlider(0)}>
           <img
-            src={tour.photos?.[0]?.url ? `http://localhost:9000${tour.photos[0].url}` : 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=1920'}
+            src={tour.photos?.[0]?.url ? `/api${tour.photos[0].url}` : 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=1920'}
             alt={getTitle()}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             onError={handleImageError}
@@ -254,7 +254,7 @@ const TourDetail: React.FC = () => {
                   onClick={() => openPhotoSlider(index + 1)}
                 >
                   <img
-                    src={`http://localhost:9000${photo.url}`}
+                    src={`/api${photo.url}`}
                     alt={`Photo ${index + 2}`}
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                     onError={handleImageError}

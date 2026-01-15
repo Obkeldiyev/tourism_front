@@ -61,7 +61,7 @@ const AdminDashboard: React.FC = () => {
   const { data: bookings = [] } = useQuery({
     queryKey: ['admin-bookings'],
     queryFn: async () => {
-      const response = await fetch('http://localhost:9000/bookings', {
+      const response = await fetch('/api/bookings', {
         headers: {
           token: token || '',
         },
@@ -386,7 +386,7 @@ const AdminDashboard: React.FC = () => {
                       <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center overflow-hidden">
                         {tour.photos && tour.photos[0] ? (
                           <img
-                            src={`http://localhost:9000${tour.photos[0].url}`}
+                            src={`/api${tour.photos[0].url}`}
                             alt={tour.title_en}
                             className="w-full h-full object-cover"
                             onError={(e) => {

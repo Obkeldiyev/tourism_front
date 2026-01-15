@@ -1,6 +1,6 @@
 import { Tour, CreateBookingData, Booking } from '@/types/tour';
 
-const API_BASE_URL = 'http://localhost:9000';
+const API_BASE_URL = '/api';
 
 // API Response wrapper interface
 interface ApiResponse<T> {

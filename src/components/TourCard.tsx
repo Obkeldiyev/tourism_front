@@ -45,7 +45,7 @@ const TourCard: React.FC<TourCardProps> = ({ tour, onBook }) => {
     }
     
     // Try to use backend image, but have fallback ready
-    return `http://localhost:9000${tour.photos[0].url}`;
+    return `/api${tour.photos[0].url}`;
   };
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {

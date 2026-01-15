@@ -1,5 +1,5 @@
 // Simple test script to check backend connectivity
-const API_BASE_URL = 'http://localhost:9000';
+const API_BASE_URL = '/api';
 
 async function testBackendConnection() {
   console.log('🔍 Testing backend connection...');
