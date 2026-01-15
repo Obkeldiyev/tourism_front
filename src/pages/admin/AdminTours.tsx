@@ -43,10 +43,12 @@ const AdminTours: React.FC = () => {
       const response = await fetch(`http://localhost:9000/turs/${id}`, {
         method: 'DELETE',
         headers: {
-          Authorization: `Bearer ${token}`,
+          token: token || '',
         },
       });
       if (!response.ok) throw new Error('Failed to delete tour');
+      const result = await response.json();
+      return result;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admin-tours'] });
@@ -163,13 +165,22 @@ const AdminTours: React.FC = () => {
                       <div className="w-16 h-16 rounded-lg bg-primary/10 flex items-center justify-center overflow-hidden">
                         {tour.photos && tour.photos[0] ? (
                           <img
-                            src={tour.photos[0].url}
+                            src={`http://localhost:9000${tour.photos[0].url}`}
                             alt={tour.title_en}
                             className="w-full h-full object-cover"
+                            onError={(e) => {
+                              // Fallback to icon if image fails to load
+                              const target = e.currentTarget;
+                              target.style.display = 'none';
+                              const parent = target.parentElement;
+                              if (parent) {
+                                const icon = parent.querySelector('.fallback-icon');
+                                if (icon) icon.classList.remove('hidden');
+                              }
+                            }}
                           />
-                        ) : (
-                          <Map className="h-8 w-8 text-primary" />
-                        )}
+                        ) : null}
+                        <Map className={`h-8 w-8 text-primary fallback-icon ${tour.photos && tour.photos[0] ? 'hidden' : ''}`} />
                       </div>
                       <div>
                         <h3 className="font-medium">{tour.title_en}</h3>

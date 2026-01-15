@@ -1,73 +1,105 @@
-# Welcome to your Lovable project
+# Blue Horizon Tours - Karakalpakstan Travel
 
-## Project info
+A modern tourism website for exploring the unique destinations of Karakalpakstan, including Nukus, the Aral Sea region, and ancient cultural sites.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Project Overview
 
-## How can I edit this code?
+This is a React-based tourism website that showcases tours and destinations in Karakalpakstan, allowing users to browse and book travel packages to discover this fascinating autonomous republic.
 
-There are several ways of editing your application.
+## Key Destinations
 
-**Use Lovable**
+- **Nukus** - Capital city with the world-famous Savitsky Museum
+- **Aral Sea** - The vanishing sea and its ecological story
+- **Mizdakhan** - Ancient necropolis with 2000 years of history
+- **Muynak** - Former fishing port with the ship graveyard
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Technologies Used
 
-Changes made via Lovable will be committed automatically to this repo.
+- React 18 with TypeScript
+- Vite for build tooling
+- Tailwind CSS for styling
+- shadcn/ui components
+- React Router for navigation
+- React Query for data fetching
 
-**Use your preferred IDE**
+## Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js (v16 or higher)
+- npm or yarn
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd blue-horizon-tours
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. Install dependencies
+```bash
+npm install
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Start the development server
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. Open your browser and navigate to `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Available Scripts
 
-**Use GitHub Codespaces**
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project Structure
 
-## What technologies are used for this project?
+```
+src/
+├── components/     # Reusable UI components
+├── pages/         # Page components
+├── contexts/      # React contexts
+├── services/      # API services
+├── types/         # TypeScript type definitions
+├── hooks/         # Custom React hooks
+└── lib/           # Utility functions
+```
 
-This project is built with:
+## Features
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- Browse available tours in Karakalpakstan
+- View detailed tour information
+- Book tours with contact information
+- Multi-language support (Uzbek, Russian, English, Karakalpak)
+- Responsive design
+- Admin panel for tour management
 
-## How can I deploy this project?
+## Backend Integration
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+This frontend connects to a Node.js/Express backend with the following endpoints:
+- `GET /turs` - Get all tours
+- `GET /turs/:id` - Get single tour
+- `POST /bookings` - Create booking
 
-## Can I connect a custom domain to my Lovable project?
+## Deployment
 
-Yes, you can!
+Build the project for production:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```bash
+npm run build
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+The built files will be in the `dist` directory, ready for deployment to any static hosting service.
+
+## About Karakalpakstan
+
+Karakalpakstan is an autonomous republic within Uzbekistan, known for:
+- The Aral Sea ecological disaster and recovery efforts
+- Rich Karakalpak culture and traditions
+- The Savitsky Museum with world-class art collections
+- Ancient archaeological sites like Mizdakhan
+- Unique desert and steppe landscapes

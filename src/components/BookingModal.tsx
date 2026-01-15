@@ -102,7 +102,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ tour, isOpen, onClose }) =>
                 value={formData.full_name}
                 onChange={e => setFormData({ ...formData, full_name: e.target.value })}
                 required
-                placeholder="John Doe"
+                placeholder="Ism, Имя, Name"
               />
             </div>
 

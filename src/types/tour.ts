@@ -6,8 +6,14 @@ export interface Photo {
 
 export interface AdditionalInfo {
   id: number;
-  info_title: string;
-  info_description: string;
+  info_title_uz: string;
+  info_description_uz: string;
+  info_title_en: string;
+  info_description_en: string;
+  info_title_ru: string;
+  info_description_ru: string;
+  info_title_kaa: string;
+  info_description_kaa: string;
   tur_id: string;
 }
 

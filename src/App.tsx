@@ -10,6 +10,7 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
 import Tours from "./pages/Tours";
 import TourDetail from "./pages/TourDetail";
+import Destinations from "./pages/Destinations";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -34,6 +35,7 @@ const App = () => (
                 <Route path="/" element={<Index />} />
                 <Route path="/tours" element={<Tours />} />
                 <Route path="/tours/:id" element={<TourDetail />} />
+                <Route path="/destinations" element={<Destinations />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/admin/login" element={<AdminLogin />} />

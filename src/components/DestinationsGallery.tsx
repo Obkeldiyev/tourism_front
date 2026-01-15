@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { MapPin } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import registanImage from '@/assets/registan.jpg';
@@ -12,46 +13,46 @@ const DestinationsGallery: React.FC = () => {
     {
       image: registanImage,
       title: {
-        en: 'Samarkand',
-        ru: 'Самарканд',
-        uz: 'Samarqand',
-        kaa: 'Samarqand',
+        en: 'Nukus',
+        ru: 'Нукус',
+        uz: 'Nukus',
+        kaa: 'Nukus',
       },
       description: {
-        en: 'The jewel of the Silk Road with its magnificent Registan Square',
-        ru: 'Жемчужина Шелкового пути с великолепной площадью Регистан',
-        uz: 'Buyuk Ipak yo\'lining marvaridi - ajoyib Registon maydoni bilan',
-        kaa: 'Jipek jolının gáwheri - ájaiyıp Registan maydanı menen',
+        en: 'Capital of Karakalpakstan, home to the world-famous Savitsky Museum',
+        ru: 'Столица Каракалпакстана, дом всемирно известного музея Савицкого',
+        uz: 'Qaraqalpaqstan poytaxti, dunyoga mashhur Savitskiy muzeyining joyi',
+        kaa: 'Qaraqalpaqstannıń paytaxtı, dúnyaǵa máshhur Savitskiy muzeyiniń orını',
       },
     },
     {
       image: khivaImage,
       title: {
-        en: 'Khiva',
-        ru: 'Хива',
-        uz: 'Xiva',
-        kaa: 'Xıwa',
+        en: 'Aral Sea',
+        ru: 'Аральское море',
+        uz: 'Orol dengizi',
+        kaa: 'Aral teńizi',
       },
       description: {
-        en: 'An open-air museum with perfectly preserved ancient architecture',
-        ru: 'Музей под открытым небом с прекрасно сохранившейся древней архитектурой',
-        uz: 'Qadimiy me\'morchiligi mukammal saqlanib qolgan ochiq osmon muzeysi',
-        kaa: 'Qadimgi árxitekturası tóliq saqlangan ashıq aspan muzeyi',
+        en: 'The vanishing sea with its haunting ship graveyard and ecological story',
+        ru: 'Исчезающее море с призрачным кладбищем кораблей и экологической историей',
+        uz: 'G\'oyib bo\'layotgan dengiz va uning dahshatli kema qabristoni',
+        kaa: 'G\'áyıp bolatırǧan teńiz hám onıń qorqınısh keme qábiristanı',
       },
     },
     {
       image: bukharaImage,
       title: {
-        en: 'Bukhara',
-        ru: 'Бухара',
-        uz: 'Buxoro',
-        kaa: 'Buxara',
+        en: 'Mizdakhan',
+        ru: 'Миздахан',
+        uz: 'Mizdaxon',
+        kaa: 'Mizdaxan',
       },
       description: {
-        en: 'A sacred city with over 2,000 years of history and culture',
-        ru: 'Священный город с более чем 2000-летней историей и культурой',
-        uz: '2000 yillik tarix va madaniyatga ega muqaddas shahar',
-        kaa: '2000 jıldan aslamıraq tariyxı hám mádeniyet ortalığı',
+        en: 'Ancient necropolis with 2000 years of history and sacred legends',
+        ru: 'Древний некрополь с 2000-летней историей и священными легендами',
+        uz: '2000 yillik tarix va muqaddas afsonalarga ega qadimiy qabristonlar',
+        kaa: '2000 jıllıq tariyxı hám muqaddas ertekleri bar qadimgi qábiristanlar',
       },
     },
   ];
@@ -64,10 +65,10 @@ const DestinationsGallery: React.FC = () => {
   };
 
   const sectionSubtitle = {
-    en: 'Discover the ancient cities of the Silk Road',
-    ru: 'Откройте для себя древние города Шелкового пути',
-    uz: 'Buyuk Ipak yo\'lining qadimiy shaharlarini kashf eting',
-    kaa: 'Jipek jolının qadimgi qalaların ashıń',
+    en: 'Discover the unique landscapes and culture of Karakalpakstan',
+    ru: 'Откройте для себя уникальные пейзажи и культуру Каракалпакстана',
+    uz: 'Qaraqalpaqstanning noyob manzaralari va madaniyatini kashf eting',
+    kaa: 'Qaraqalpaqstannıń noyob mánzeraları hám mádeniyet ashıń',
   };
 
   return (
@@ -86,9 +87,10 @@ const DestinationsGallery: React.FC = () => {
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {destinations.map((destination, index) => (
-            <div
+            <Link
               key={index}
-              className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer"
+              to="/destinations"
+              className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer block"
             >
               <img
                 src={destination.image}
@@ -107,8 +109,22 @@ const DestinationsGallery: React.FC = () => {
                   {destination.description[language]}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
+        </div>
+
+        {/* View All Button */}
+        <div className="text-center mt-12">
+          <Link
+            to="/destinations"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 hover:bg-primary/20 text-primary rounded-xl transition-colors font-medium"
+          >
+            {language === 'en' ? 'View All Destinations' : 
+             language === 'ru' ? 'Все направления' :
+             language === 'uz' ? 'Barcha yo\'nalishlar' :
+             'Barlıq bağdarlar'}
+            <MapPin className="h-4 w-4" />
+          </Link>
         </div>
       </div>
     </section>

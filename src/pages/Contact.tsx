@@ -25,18 +25,18 @@ const Contact: React.FC = () => {
   const contactInfo = [
     {
       icon: MapPin,
-      title: 'Address',
+      title: t('contact_address'),
       value: t('footer_address'),
     },
     {
       icon: Phone,
-      title: 'Phone',
-      value: '+998 90 123 45 67',
+      title: t('contact_phone'),
+      value: '+998 97 220 85 13',
     },
     {
       icon: Mail,
-      title: 'Email',
-      value: 'info@uzbektravel.uz',
+      title: t('contact_email'),
+      value: '',
     },
   ];
 
@@ -52,7 +52,7 @@ const Contact: React.FC = () => {
               <span className="text-gradient">{t('nav_contact')}</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Get in touch with us to plan your perfect Uzbekistan adventure
+              {t('contact_subtitle')}
             </p>
           </div>
         </div>
@@ -63,7 +63,7 @@ const Contact: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Contact Info */}
               <div>
-                <h2 className="font-display text-2xl font-bold mb-8">Get in Touch</h2>
+                <h2 className="font-display text-2xl font-bold mb-8">{t('contact_get_in_touch')}</h2>
                 <div className="space-y-6 mb-12">
                   {contactInfo.map((item, index) => (
                     <div key={index} className="flex items-start gap-4">
@@ -78,16 +78,23 @@ const Contact: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Map placeholder */}
-                <div className="aspect-video rounded-xl overflow-hidden bg-muted">
+                {/* Interactive Map */}
+                <div className="aspect-video rounded-xl overflow-hidden bg-muted shadow-lg">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d191884.83987964!2d69.11455!3d41.31152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b0cc379e9c3%3A0xa5a9323b4aa5cb98!2sTashkent%2C%20Uzbekistan!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.8!2d69.339537!3d41.293818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDE3JzQ1LjYiTiA2OcKwMjAnMzAuMyJF!5e0!3m2!1sen!2s!4v1642000000000!5m2!1sen!2s"
                     width="100%"
                     height="100%"
-                    style={{ border: 0 }}
+                    style={{ 
+                      border: 0,
+                      filter: 'grayscale(0.2) contrast(1.1)',
+                    }}
                     allowFullScreen
                     loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Blue Horizon Tours Location - Tashkent, Uzbekistan"
                   />
+                  {/* Map Overlay for Better Styling */}
+                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/10 to-transparent" />
                 </div>
               </div>
 
@@ -96,37 +103,37 @@ const Contact: React.FC = () => {
                 {isSuccess ? (
                   <div className="py-12 text-center animate-scale-in">
                     <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-                    <h3 className="text-xl font-bold mb-2">Message Sent!</h3>
-                    <p className="text-muted-foreground">We'll get back to you soon.</p>
+                    <h3 className="text-xl font-bold mb-2">{t('contact_success_title')}</h3>
+                    <p className="text-muted-foreground">{t('contact_success_text')}</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="name">Name</Label>
-                        <Input id="name" placeholder="Your name" required />
+                        <Label htmlFor="name">{t('contact_name')}</Label>
+                        <Input id="name" placeholder={t('contact_name_placeholder')} required />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
-                        <Input id="email" type="email" placeholder="your@email.com" required />
+                        <Label htmlFor="email">{t('contact_email')}</Label>
+                        <Input id="email" type="email" placeholder={t('contact_email_placeholder')} required />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="phone">Phone</Label>
-                      <Input id="phone" type="tel" placeholder="+998 90 123 45 67" />
+                      <Label htmlFor="phone">{t('contact_phone')}</Label>
+                      <Input id="phone" type="tel" placeholder={t('contact_phone_placeholder')} />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="subject">Subject</Label>
-                      <Input id="subject" placeholder="How can we help?" required />
+                      <Label htmlFor="subject">{t('contact_subject')}</Label>
+                      <Input id="subject" placeholder={t('contact_subject_placeholder')} required />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
+                      <Label htmlFor="message">{t('contact_message')}</Label>
                       <Textarea
                         id="message"
-                        placeholder="Tell us about your travel plans..."
+                        placeholder={t('contact_message_placeholder')}
                         rows={5}
                         required
                       />
@@ -142,7 +149,7 @@ const Contact: React.FC = () => {
                       ) : (
                         <>
                           <Send className="h-5 w-5 mr-2" />
-                          Send Message
+                          {t('contact_send')}
                         </>
                       )}
                     </Button>

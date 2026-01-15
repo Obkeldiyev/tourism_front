@@ -36,6 +36,7 @@ const Header: React.FC = () => {
   const navItems = [
     { to: '/', label: t('nav_home') },
     { to: '/tours', label: t('nav_tours') },
+    { to: '/destinations', label: t('nav_destinations') },
     { to: '/about', label: t('nav_about') },
     { to: '/contact', label: t('nav_contact') },
   ];
@@ -54,7 +55,7 @@ const Header: React.FC = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <span className="font-display text-2xl font-bold text-gradient">
-            O'zbekiston
+            Qaraqalpaqstan
           </span>
         </Link>
 

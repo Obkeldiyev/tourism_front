@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { 
   ArrowLeft, Calendar, Users, MapPin, Phone, 
-  Utensils, Wifi, Bus, Check, X, Loader2 
+  Utensils, Wifi, Bus, Check, X, Loader2, Camera 
 } from 'lucide-react';
 import { Tour } from '@/types/tour';
 import { api } from '@/services/api';
@@ -10,6 +10,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
+import PhotoSlider from '@/components/PhotoSlider';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
@@ -19,6 +20,8 @@ const TourDetail: React.FC = () => {
   const [tour, setTour] = useState<Tour | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isPhotoSliderOpen, setIsPhotoSliderOpen] = useState(false);
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
 
   useEffect(() => {
     const fetchTour = async () => {
@@ -87,18 +90,37 @@ const TourDetail: React.FC = () => {
     { label: t('wifi'), included: tour.wifi, icon: Wifi },
   ];
 
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const target = e.target as HTMLImageElement;
+    target.src = 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=1920';
+  };
+
+  const openPhotoSlider = (index: number = 0) => {
+    setSelectedPhotoIndex(index);
+    setIsPhotoSliderOpen(true);
+  };
+
   return (
     <div className="min-h-screen">
       <Header />
       <main className="pt-20">
         {/* Hero Image */}
-        <div className="relative h-[50vh] overflow-hidden">
+        <div className="relative h-[50vh] overflow-hidden group cursor-pointer" onClick={() => openPhotoSlider(0)}>
           <img
-            src={tour.photos?.[0]?.url || 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=1920'}
+            src={tour.photos?.[0]?.url ? `http://localhost:9000${tour.photos[0].url}` : 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=1920'}
             alt={getTitle()}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            onError={handleImageError}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+          
+          {/* Photo Count Badge */}
+          {tour.photos && tour.photos.length > 1 && (
+            <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm flex items-center gap-1">
+              <Camera className="h-3 w-3" />
+              {tour.photos.length} photos
+            </div>
+          )}
           
           {/* Back Button */}
           <Link
@@ -172,12 +194,19 @@ const TourDetail: React.FC = () => {
                   <div>
                     <h3 className="font-semibold text-lg mb-4">Additional Information</h3>
                     <div className="space-y-4">
-                      {tour.additional_info.map((info) => (
-                        <div key={info.id} className="p-4 bg-muted rounded-lg">
-                          <h4 className="font-medium mb-1">{info.info_title}</h4>
-                          <p className="text-sm text-muted-foreground">{info.info_description}</p>
-                        </div>
-                      ))}
+                      {tour.additional_info.map((info) => {
+                        const titleKey = `info_title_${language}` as keyof typeof info;
+                        const descKey = `info_description_${language}` as keyof typeof info;
+                        const title = (info[titleKey] as string) || info.info_title_en;
+                        const description = (info[descKey] as string) || info.info_description_en;
+                        
+                        return (
+                          <div key={info.id} className="p-4 bg-muted rounded-lg">
+                            <h4 className="font-medium mb-1">{title}</h4>
+                            <p className="text-sm text-muted-foreground">{description}</p>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 )}
@@ -216,13 +245,19 @@ const TourDetail: React.FC = () => {
         {/* Photo Gallery */}
         {tour.photos && tour.photos.length > 1 && (
           <div className="container mx-auto px-4 py-16">
+            <h3 className="font-display text-2xl font-bold mb-8 text-center">Photo Gallery</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {tour.photos.slice(1).map((photo) => (
-                <div key={photo.id} className="aspect-square rounded-xl overflow-hidden">
+              {tour.photos.slice(1).map((photo, index) => (
+                <div 
+                  key={photo.id} 
+                  className="aspect-square rounded-xl overflow-hidden cursor-pointer group"
+                  onClick={() => openPhotoSlider(index + 1)}
+                >
                   <img
-                    src={photo.url}
-                    alt=""
+                    src={`http://localhost:9000${photo.url}`}
+                    alt={`Photo ${index + 2}`}
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                    onError={handleImageError}
                   />
                 </div>
               ))}
@@ -236,6 +271,13 @@ const TourDetail: React.FC = () => {
         tour={tour}
         isOpen={isBookingOpen}
         onClose={() => setIsBookingOpen(false)}
+      />
+
+      <PhotoSlider
+        photos={tour.photos || []}
+        isOpen={isPhotoSliderOpen}
+        onClose={() => setIsPhotoSliderOpen(false)}
+        initialIndex={selectedPhotoIndex}
       />
     </div>
   );

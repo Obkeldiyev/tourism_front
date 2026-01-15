@@ -38,12 +38,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     try {
       const response = await fetch(`${API_BASE_URL}/admins/account`, {
         headers: {
-          Authorization: `Bearer ${authToken}`,
+          token: authToken,
         },
       });
       if (response.ok) {
-        const data = await response.json();
-        setAdmin(data);
+        const result = await response.json();
+        setAdmin(result.data);
       } else {
         localStorage.removeItem('admin_token');
         setToken(null);
@@ -68,10 +68,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       throw new Error('Invalid credentials');
     }
 
-    const data = await response.json();
-    setToken(data.token);
-    localStorage.setItem('admin_token', data.token);
-    await fetchAccount(data.token);
+    const result = await response.json();
+    setToken(result.data.token);
+    localStorage.setItem('admin_token', result.data.token);
+    await fetchAccount(result.data.token);
   };
 
   const logout = () => {

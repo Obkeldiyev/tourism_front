@@ -9,10 +9,10 @@ const About: React.FC = () => {
   const { t } = useLanguage();
 
   const stats = [
-    { icon: Users, value: '10,000+', label: 'Happy Travelers' },
-    { icon: MapPin, value: '50+', label: 'Destinations' },
-    { icon: Award, value: '15+', label: 'Years Experience' },
-    { icon: Heart, value: '99%', label: 'Satisfaction' },
+    { icon: Users, value: '5,000+', label: t('stats_travelers') },
+    { icon: MapPin, value: '25+', label: t('stats_destinations') },
+    { icon: Award, value: '10+', label: t('stats_experience') },
+    { icon: Heart, value: '98%', label: t('stats_satisfaction') },
   ];
 
   return (
@@ -27,7 +27,7 @@ const About: React.FC = () => {
               <span className="text-gradient">{t('nav_about')}</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {t('hero_subtitle')}
+              {t('about_subtitle')}
             </p>
           </div>
         </div>
@@ -55,24 +55,17 @@ const About: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
-                  Discover the Magic of <span className="text-gradient">Uzbekistan</span>
+                  {t('about_title')}
                 </h2>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    Uzbekistan stands at the crossroads of the ancient Silk Road, where empires rose and fell, 
-                    where traders from China, India, Persia, and Europe exchanged not just goods, but ideas, 
-                    art, and culture.
+                    {t('about_text1')}
                   </p>
                   <p>
-                    Our mission is to share the beauty and rich heritage of our homeland with travelers 
-                    from around the world. From the majestic Registan Square in Samarkand to the 
-                    labyrinthine streets of Bukhara, every corner tells a story.
+                    {t('about_text2')}
                   </p>
                   <p>
-                    With over 15 years of experience, our team of local experts ensures that every 
-                    journey is authentic, safe, and unforgettable. We believe in sustainable tourism 
-                    that benefits local communities while preserving our cultural treasures for 
-                    future generations.
+                    {t('about_text3')}
                   </p>
                 </div>
               </div>

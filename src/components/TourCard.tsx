@@ -38,16 +38,31 @@ const TourCard: React.FC<TourCardProps> = ({ tour, onBook }) => {
     return days;
   };
 
-  const imageUrl = tour.photos?.[0]?.url || 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=800';
+  const getImageUrl = () => {
+    // If no photos or backend is not available, use fallback images
+    if (!tour.photos?.[0]?.url) {
+      return 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=800';
+    }
+    
+    // Try to use backend image, but have fallback ready
+    return `http://localhost:9000${tour.photos[0].url}`;
+  };
+
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    // Fallback to a default image if backend image fails to load
+    const target = e.target as HTMLImageElement;
+    target.src = 'https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=800';
+  };
 
   return (
     <div className="group bg-card rounded-xl overflow-hidden shadow-card card-hover border border-border">
       {/* Image */}
       <div className="relative h-48 overflow-hidden">
         <img
-          src={imageUrl}
+          src={getImageUrl()}
           alt={getTitle()}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          onError={handleImageError}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end">

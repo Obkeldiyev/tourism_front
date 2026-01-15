@@ -55,11 +55,22 @@ const Footer: React.FC = () => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary" />
-                {t('footer_address')}
+                <a
+                  href="https://www.google.com/maps?ll=41.293818,69.339537&z=15&t=m&hl=uz&gl=US&mapclient=embed&q=41%C2%B017%2745.6%22N+69%C2%B020%2730.3%22E+41.296000,+69.341750@41.296,69.34174999999999"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors cursor-pointer"
+                >
+                  {t('footer_address')}
+                </a>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Phone className="h-4 w-4 text-primary" />
-                +998 90 123 45 67
+                +998 97 220 85 13
+              </li>
+              <li className="flex items-center gap-2 text-muted-foreground">
+                <Phone className="h-4 w-4 text-primary" />
+                +998 90 652 28 81
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="h-4 w-4 text-primary" />
@@ -73,7 +84,7 @@ const Footer: React.FC = () => {
             <h4 className="font-semibold mb-4">Social</h4>
             <div className="flex gap-3">
               <a
-                href="#"
+                href="https://www.instagram.com/modern_avia_trip/"
                 className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all"
               >
                 <Instagram className="h-5 w-5" />
@@ -85,7 +96,7 @@ const Footer: React.FC = () => {
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="https://t.me/MavlyudaEmbergenova"
                 className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all"
               >
                 <Send className="h-5 w-5" />
