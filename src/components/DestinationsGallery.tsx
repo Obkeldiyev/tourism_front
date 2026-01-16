@@ -2,16 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import registanImage from '@/assets/registan.jpg';
-import khivaImage from '@/assets/khiva.jpg';
-import bukharaImage from '@/assets/bukhara.jpg';
+import nukusImage from '@/assets/nukus-savitsky.jpg';
+import aralSeaImage from '@/assets/aral-sea-ships.jpg';
+import mizdakhanImage from '@/assets/mizdakhan-necropolis.jpg';
 
 const DestinationsGallery: React.FC = () => {
   const { language } = useLanguage();
 
   const destinations = [
     {
-      image: registanImage,
+      image: "https://uzbek-travel.com/images/uz/Cities/Nukus/mizdakhan_cemetery_skyline.jpg",
       title: {
         en: 'Nukus',
         ru: 'Нукус',
@@ -26,7 +26,7 @@ const DestinationsGallery: React.FC = () => {
       },
     },
     {
-      image: khivaImage,
+      image: "https://eurasianet.org/sites/default/files/styles/article/public/images/040814_01_0.JPG?itok=tSdI7C-W",
       title: {
         en: 'Aral Sea',
         ru: 'Аральское море',
@@ -41,7 +41,7 @@ const DestinationsGallery: React.FC = () => {
       },
     },
     {
-      image: bukharaImage,
+      image: "https://eurasia.travel/wp-content/uploads/2025/02/1.-Mizdakhan-necropolis-Karakalpakstan.jpg",
       title: {
         en: 'Mizdakhan',
         ru: 'Миздахан',
@@ -119,10 +119,10 @@ const DestinationsGallery: React.FC = () => {
             to="/destinations"
             className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 hover:bg-primary/20 text-primary rounded-xl transition-colors font-medium"
           >
-            {language === 'en' ? 'View All Destinations' : 
-             language === 'ru' ? 'Все направления' :
-             language === 'uz' ? 'Barcha yo\'nalishlar' :
-             'Barlıq bağdarlar'}
+            {language === 'en' ? 'View All Destinations' :
+              language === 'ru' ? 'Все направления' :
+                language === 'uz' ? 'Barcha yo\'nalishlar' :
+                  'Barlıq bağdarlar'}
             <MapPin className="h-4 w-4" />
           </Link>
         </div>

@@ -8,16 +8,16 @@ const CultureSection: React.FC = () => {
 
   const content = {
     title: {
-      en: 'Experience Uzbek Culture',
-      ru: 'Познакомьтесь с узбекской культурой',
-      uz: 'O\'zbek madaniyatini his eting',
-      kaa: 'O\'zbek mádenyetin sezinin',
+      en: 'Experience Karakalpak Culture',
+      ru: 'Познакомьтесь с каракалпакской культурой',
+      uz: 'Qaraqalpaq madaniyatini his eting',
+      kaa: 'Qaraqalpaq mádenyetin sezinin',
     },
     subtitle: {
-      en: 'Immerse yourself in centuries-old traditions, flavors, and hospitality',
-      ru: 'Погрузитесь в многовековые традиции, вкусы и гостеприимство',
-      uz: 'Asrlar davomida shakllangan an\'analar, ta\'mlar va mehmondo\'stlikka cho\'ming',
-      kaa: 'Ásirler dawamında payda bolğan dástúrler, tá\'mler hám miymandoslıqtı sezinin',
+      en: 'Immerse yourself in centuries-old traditions, flavors, and hospitality of Karakalpakstan',
+      ru: 'Погрузитесь в многовековые традиции, вкусы и гостеприимство Каракалпакстана',
+      uz: 'Qaraqalpaqstanning asrlar davomida shakllangan an\'analar, ta\'mlar va mehmondo\'stlikka cho\'ming',
+      kaa: 'Qaraqalpaqstannıń ásirler dawamında payda bolğan dástúrler, tá\'mler hám miymandoslıqtı sezinin',
     },
     cuisine: {
       title: {
@@ -27,10 +27,10 @@ const CultureSection: React.FC = () => {
         kaa: 'Dástúriy tağamlar',
       },
       description: {
-        en: 'Taste the legendary plov, samsa, lagman, and other traditional dishes prepared with love and centuries-old recipes.',
-        ru: 'Попробуйте легендарный плов, самсу, лагман и другие традиционные блюда, приготовленные с любовью по вековым рецептам.',
-        uz: 'Afsonaviy palov, somsa, lag\'mon va boshqa an\'anaviy taomlarni tatib ko\'ring.',
-        kaa: 'Dástanlı palaw, somsa, lağman hám basqa dástúriy tağamlardan tatıń.',
+        en: 'Taste the traditional fish dishes from the Aral Sea, beshbarmak, and other Karakalpak specialties prepared with ancient recipes.',
+        ru: 'Попробуйте традиционные рыбные блюда Аральского моря, бешбармак и другие каракалпакские деликатесы по древним рецептам.',
+        uz: 'Orol dengizining an\'anaviy baliq taomlari, beshbarmaq va boshqa qaraqalpaq taomlarini tatib ko\'ring.',
+        kaa: 'Aral teńiziniń dástúriy balıq tağamları, beshbarmaq hám basqa qaraqalpaq tağamlarınan tatıń.',
       },
     },
     highlights: [
@@ -82,7 +82,7 @@ const CultureSection: React.FC = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img
                 src={uzbekCuisineImage}
-                alt="Uzbek Cuisine"
+                alt="Karakalpak Cuisine"
                 className="w-full h-[500px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
