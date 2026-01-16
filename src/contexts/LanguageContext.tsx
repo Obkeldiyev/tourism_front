@@ -20,7 +20,7 @@ export const translations: Translations = {
   nav_contact: { uz: "Aloqa", ru: "Контакты", en: "Contact", kaa: "Baylanıs" },
   
   // Hero
-  hero_title: { uz: "Qaraqalpaqstanga sayohat", ru: "Путешествие в Каракалпакстан", en: "Travel to Karakalpakstan", kaa: "Qaraqalpaqstanǵa sayaxat" },
+  hero_title: { uz: "Qoraqalpog'istonga sayohat", ru: "Путешествие в Каракалпакстан", en: "Travel to Karakalpakstan", kaa: "Qaraqalpaqstanǵa sayaxat" },
   hero_subtitle: { uz: "Orol dengizi va Nukus shahri - noyob madaniyat, tabiiy go'zallik va unutilmas tajribalar sizni kutmoqda", ru: "Аральское море и город Нукус - уникальная культура, природная красота и незабываемые впечатления ждут вас", en: "The Aral Sea and Nukus city - unique culture, natural beauty and unforgettable experiences await you", kaa: "Aral teńizi hám Nukus qalası - noyob mádeniyet, tábiyiy gózallik hám umıtılmas tájiriyibeler sizdi kútip tur" },
   hero_cta: { uz: "Sayohatlarni ko'rish", ru: "Смотреть туры", en: "View Tours", kaa: "Turları kóriw" },
   
