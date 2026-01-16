@@ -9,13 +9,22 @@ import {
   LogOut,
   Pencil,
   Trash2,
-  ArrowLeft
+  ArrowLeft,
+  Globe,
+  MessageSquare
 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import { useLanguage, Language } from '@/contexts/LanguageContext';
 import { api } from '@/services/api';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -28,10 +37,20 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
+const languages: { code: Language; name: string; flag: string }[] = [
+  { code: 'en', name: 'English', flag: '🇬🇧' },
+  { code: 'uz', name: "O'zbekcha", flag: '🇺🇿' },
+  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
+  { code: 'kaa', name: 'Qaraqalpaqsha', flag: '🇺🇿' },
+];
+
 const AdminTours: React.FC = () => {
   const { admin, logout, token } = useAuth();
+  const { language, setLanguage, t } = useLanguage();
   const { toast } = useToast();
   const queryClient = useQueryClient();
+
+  const currentLang = languages.find(l => l.code === language);
 
   const { data: tours = [], isLoading } = useQuery({
     queryKey: ['admin-tours'],
@@ -75,7 +94,7 @@ const AdminTours: React.FC = () => {
             <LayoutDashboard className="h-5 w-5 text-primary-foreground" />
           </div>
           <div>
-            <h1 className="font-display font-bold">Admin Panel</h1>
+            <h1 className="font-display font-bold">{t('admin_panel')}</h1>
             <p className="text-xs text-muted-foreground">{admin?.username}</p>
           </div>
         </div>
@@ -86,23 +105,54 @@ const AdminTours: React.FC = () => {
             className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
           >
             <LayoutDashboard className="h-5 w-5" />
-            Dashboard
+            {t('dashboard')}
           </Link>
           <Link
             to="/admin/tours"
             className="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary font-medium"
           >
             <Map className="h-5 w-5" />
-            Tours
+            {t('nav_tours')}
           </Link>
           <Link
             to="/admin/bookings"
             className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
           >
             <Users className="h-5 w-5" />
-            Bookings
+            {t('tours_book')}
+          </Link>
+          <Link
+            to="/admin/contact-submissions"
+            className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+          >
+            <MessageSquare className="h-5 w-5" />
+            Contact Messages
           </Link>
         </nav>
+
+        {/* Language Selector */}
+        <div className="absolute bottom-20 left-6 right-6">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm" className="w-full justify-start gap-2">
+                <Globe className="h-4 w-4" />
+                <span>{currentLang?.flag} {currentLang?.name}</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-48">
+              {languages.map(lang => (
+                <DropdownMenuItem
+                  key={lang.code}
+                  onClick={() => setLanguage(lang.code)}
+                  className={language === lang.code ? 'bg-primary/10' : ''}
+                >
+                  <span className="mr-2">{lang.flag}</span>
+                  {lang.name}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
 
         <div className="absolute bottom-6 left-6 right-6">
           <Button
@@ -111,7 +161,7 @@ const AdminTours: React.FC = () => {
             onClick={logout}
           >
             <LogOut className="h-4 w-4" />
-            Sign Out
+            {t('sign_out')}
           </Button>
         </div>
       </aside>
@@ -126,14 +176,14 @@ const AdminTours: React.FC = () => {
               </Button>
             </Link>
             <div>
-              <h1 className="text-3xl font-display font-bold">Manage Tours</h1>
+              <h1 className="text-3xl font-display font-bold">{t('nav_tours')} Management</h1>
               <p className="text-muted-foreground">Create, edit, and delete tours</p>
             </div>
           </div>
           <Link to="/admin/tours/new">
             <Button className="btn-gradient gap-2">
               <Plus className="h-4 w-4" />
-              Add New Tour
+              {t('add_new_tour')}
             </Button>
           </Link>
         </div>
@@ -141,17 +191,17 @@ const AdminTours: React.FC = () => {
         {/* Tours List */}
         <Card className="border-border/50">
           <CardHeader>
-            <CardTitle>All Tours ({tours.length})</CardTitle>
+            <CardTitle>All {t('nav_tours')} ({tours.length})</CardTitle>
           </CardHeader>
           <CardContent>
             {isLoading ? (
-              <div className="text-center py-12 text-muted-foreground">Loading...</div>
+              <div className="text-center py-12 text-muted-foreground">{t('loading')}</div>
             ) : tours.length === 0 ? (
               <div className="text-center py-12">
                 <Map className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-                <p className="text-muted-foreground">No tours yet. Create your first tour!</p>
+                <p className="text-muted-foreground">{t('no_tours_yet')}</p>
                 <Link to="/admin/tours/new">
-                  <Button className="mt-4 btn-gradient">Create Tour</Button>
+                  <Button className="mt-4 btn-gradient">{t('create_tour')}</Button>
                 </Link>
               </div>
             ) : (
@@ -188,17 +238,17 @@ const AdminTours: React.FC = () => {
                           {new Date(tour.start_date).toLocaleDateString()} - {new Date(tour.end_date).toLocaleDateString()}
                         </p>
                         <div className="flex gap-2 mt-1">
-                          {tour.breakfast && <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">Breakfast</span>}
-                          {tour.lunch && <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">Lunch</span>}
-                          {tour.dinner && <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">Dinner</span>}
-                          {tour.wifi && <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">WiFi</span>}
+                          {tour.breakfast && <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">{t('breakfast')}</span>}
+                          {tour.lunch && <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">{t('lunch')}</span>}
+                          {tour.dinner && <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">{t('dinner')}</span>}
+                          {tour.wifi && <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">{t('wifi')}</span>}
                         </div>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
                       <div className="text-right mr-4">
                         <p className="font-semibold text-primary">${tour.cost}</p>
-                        <p className="text-sm text-muted-foreground">{tour.max_seats} seats</p>
+                        <p className="text-sm text-muted-foreground">{tour.max_seats} {t('seats')}</p>
                       </div>
                       <Link to={`/admin/tours/${tour.id}/edit`}>
                         <Button variant="outline" size="icon">

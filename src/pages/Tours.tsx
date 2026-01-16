@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '@/components/Header';
 import ToursSection from '@/components/ToursSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -23,6 +24,7 @@ const Tours: React.FC = () => {
           </div>
         </div>
         <ToursSection />
+        <TestimonialsSection />
       </main>
       <Footer />
     </div>

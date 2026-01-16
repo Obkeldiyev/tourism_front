@@ -15,14 +15,23 @@ import {
   CheckCircle,
   XCircle,
   Clock,
-  AlertCircle
+  AlertCircle,
+  Globe,
+  MessageSquare
 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import { useLanguage, Language } from '@/contexts/LanguageContext';
 import { api } from '@/services/api';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import {
   Dialog,
   DialogContent,
@@ -40,6 +49,13 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 
+const languages: { code: Language; name: string; flag: string }[] = [
+  { code: 'en', name: 'English', flag: '🇬🇧' },
+  { code: 'uz', name: "O'zbekcha", flag: '🇺🇿' },
+  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
+  { code: 'kaa', name: 'Qaraqalpaqsha', flag: '🇺🇿' },
+];
+
 interface Booking {
   id: string;
   tur_id: string;
@@ -52,12 +68,15 @@ interface Booking {
 
 const AdminBookings: React.FC = () => {
   const { admin, logout, token } = useAuth();
+  const { language, setLanguage, t } = useLanguage();
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [bookingToDelete, setBookingToDelete] = useState<string | null>(null);
+
+  const currentLang = languages.find(l => l.code === language);
 
   const { data: bookings = [], isLoading } = useQuery({
     queryKey: ['admin-bookings'],
@@ -142,7 +161,7 @@ const AdminBookings: React.FC = () => {
             <LayoutDashboard className="h-5 w-5 text-primary-foreground" />
           </div>
           <div>
-            <h1 className="font-display font-bold">Admin Panel</h1>
+            <h1 className="font-display font-bold">{t('admin_panel')}</h1>
             <p className="text-xs text-muted-foreground">{admin?.username}</p>
           </div>
         </div>
@@ -153,23 +172,54 @@ const AdminBookings: React.FC = () => {
             className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
           >
             <LayoutDashboard className="h-5 w-5" />
-            Dashboard
+            {t('dashboard')}
           </Link>
           <Link
             to="/admin/tours"
             className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
           >
             <Map className="h-5 w-5" />
-            Tours
+            {t('nav_tours')}
           </Link>
           <Link
             to="/admin/bookings"
             className="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary font-medium"
           >
             <Users className="h-5 w-5" />
-            Bookings
+            {t('tours_book')}
+          </Link>
+          <Link
+            to="/admin/contact-submissions"
+            className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+          >
+            <MessageSquare className="h-5 w-5" />
+            Contact Messages
           </Link>
         </nav>
+
+        {/* Language Selector */}
+        <div className="absolute bottom-20 left-6 right-6">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm" className="w-full justify-start gap-2">
+                <Globe className="h-4 w-4" />
+                <span>{currentLang?.flag} {currentLang?.name}</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-48">
+              {languages.map(lang => (
+                <DropdownMenuItem
+                  key={lang.code}
+                  onClick={() => setLanguage(lang.code)}
+                  className={language === lang.code ? 'bg-primary/10' : ''}
+                >
+                  <span className="mr-2">{lang.flag}</span>
+                  {lang.name}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
 
         <div className="absolute bottom-6 left-6 right-6">
           <Button
@@ -178,7 +228,7 @@ const AdminBookings: React.FC = () => {
             onClick={logout}
           >
             <LogOut className="h-4 w-4" />
-            Sign Out
+            {t('sign_out')}
           </Button>
         </div>
       </aside>
@@ -192,7 +242,7 @@ const AdminBookings: React.FC = () => {
             </Button>
           </Link>
           <div>
-            <h1 className="text-3xl font-display font-bold">Bookings</h1>
+            <h1 className="text-3xl font-display font-bold">{t('tours_book')}</h1>
             <p className="text-muted-foreground">View and manage all tour bookings</p>
           </div>
         </div>
