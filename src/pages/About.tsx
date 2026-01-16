@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Features from '@/components/Features';
 import { useLanguage } from '@/contexts/LanguageContext';
+import nukusImage from '@/assets/nukus-savitsky.jpg';
 
 const About: React.FC = () => {
   const { t } = useLanguage();
@@ -72,8 +73,8 @@ const About: React.FC = () => {
               <div className="relative">
                 <div className="aspect-square rounded-2xl overflow-hidden shadow-elevated">
                   <img
-                    src="https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=800"
-                    alt="Uzbekistan Architecture"
+                    src="https://uzbekistan.travel/storage/app/media/cropped-images/nukus-0-0-0-0-1595245944.jpg"
+                    alt="Nukus Savitsky Museum - Karakalpakstan"
                     className="w-full h-full object-cover"
                   />
                 </div>
