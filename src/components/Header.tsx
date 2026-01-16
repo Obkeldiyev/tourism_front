@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import logoImage from '@/assets/madmina-kungirot-logo.png';
 
 const languages: { code: Language; name: string; flag: string }[] = [
   { code: 'en', name: 'English', flag: '🇬🇧' },
@@ -54,9 +55,11 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <span className="font-display text-2xl font-bold text-gradient">
-            Qaraqalpaqstan
-          </span>
+          <img 
+            src={logoImage} 
+            alt="Madmina Kungirot Tour" 
+            className="h-12 w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop Navigation */}

@@ -127,6 +127,7 @@ export const translations: Translations = {
   contact_message: { uz: "Xabar", ru: "Сообщение", en: "Message", kaa: "Xabar" },
   contact_message_placeholder: { uz: "Sayohat rejalaringiz haqida bizga ayting...", ru: "Расскажите нам о ваших планах путешествий...", en: "Tell us about your travel plans...", kaa: "Sayaxat josparlarnız haqqında bizge aytiń..." },
   contact_send: { uz: "Xabar yuborish", ru: "Отправить сообщение", en: "Send Message", kaa: "Xabar jiberiw" },
+  contact_rating: { uz: "Baholash (1-5 yulduz)", ru: "Оценка (1-5 звезд)", en: "Rating (1-5 stars)", kaa: "Bahalash (1-5 juldız)" },
   contact_success_title: { uz: "Xabar yuborildi!", ru: "Сообщение отправлено!", en: "Message Sent!", kaa: "Xabar jiberildi!" },
   contact_success_text: { uz: "Tez orada sizga javob beramiz.", ru: "Мы скоро свяжемся с вами.", en: "We'll get back to you soon.", kaa: "Tez aradan sizge juwap beremiz." },
 };

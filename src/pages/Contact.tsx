@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Send, Loader2, CheckCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, Loader2, CheckCircle, Star } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -7,19 +7,60 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { addContactSubmission } from '@/data/contactSubmissions';
 
 const Contact: React.FC = () => {
   const { t } = useLanguage();
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [rating, setRating] = useState(5);
+  const [hoveredRating, setHoveredRating] = useState(0);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate form submission
+    
+    // Simulate form submission delay
     await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsLoading(false);
-    setIsSuccess(true);
+    
+    try {
+      // Add submission to our data store
+      addContactSubmission({
+        ...formData,
+        rating
+      });
+      
+      setIsLoading(false);
+      setIsSuccess(true);
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+      });
+      setRating(5);
+    } catch (error) {
+      setIsLoading(false);
+      console.error('Error submitting form:', error);
+    }
   };
 
   const contactInfo = [
@@ -111,32 +152,92 @@ const Contact: React.FC = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="name">{t('contact_name')}</Label>
-                        <Input id="name" placeholder={t('contact_name_placeholder')} required />
+                        <Input 
+                          id="name" 
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          placeholder={t('contact_name_placeholder')} 
+                          required 
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email">{t('contact_email')}</Label>
-                        <Input id="email" type="email" placeholder={t('contact_email_placeholder')} required />
+                        <Input 
+                          id="email" 
+                          name="email"
+                          type="email" 
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          placeholder={t('contact_email_placeholder')} 
+                          required 
+                        />
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="phone">{t('contact_phone')}</Label>
-                      <Input id="phone" type="tel" placeholder={t('contact_phone_placeholder')} />
+                      <Input 
+                        id="phone" 
+                        name="phone"
+                        type="tel" 
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        placeholder={t('contact_phone_placeholder')} 
+                      />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="subject">{t('contact_subject')}</Label>
-                      <Input id="subject" placeholder={t('contact_subject_placeholder')} required />
+                      <Input 
+                        id="subject" 
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleInputChange}
+                        placeholder={t('contact_subject_placeholder')} 
+                        required 
+                      />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="message">{t('contact_message')}</Label>
                       <Textarea
                         id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
                         placeholder={t('contact_message_placeholder')}
                         rows={5}
                         required
                       />
+                    </div>
+
+                    {/* Star Rating */}
+                    <div className="space-y-2">
+                      <Label>{t('contact_rating')}</Label>
+                      <div className="flex items-center gap-1">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <button
+                            key={star}
+                            type="button"
+                            className="p-1 transition-colors"
+                            onMouseEnter={() => setHoveredRating(star)}
+                            onMouseLeave={() => setHoveredRating(0)}
+                            onClick={() => setRating(star)}
+                          >
+                            <Star
+                              className={`h-6 w-6 ${
+                                star <= (hoveredRating || rating)
+                                  ? 'fill-yellow-400 text-yellow-400'
+                                  : 'text-gray-300'
+                              }`}
+                            />
+                          </button>
+                        ))}
+                        <span className="ml-2 text-sm text-muted-foreground">
+                          ({rating}/5)
+                        </span>
+                      </div>
                     </div>
 
                     <Button

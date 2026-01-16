@@ -14,7 +14,8 @@ import {
   CheckCircle,
   XCircle,
   AlertCircle,
-  Globe
+  Globe,
+  MessageSquare
 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage, Language } from '@/contexts/LanguageContext';
@@ -200,6 +201,13 @@ const AdminDashboard: React.FC = () => {
             <Users className="h-5 w-5" />
             {t('tours_book')}
           </Link>
+          <Link
+            to="/admin/contact-submissions"
+            className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+          >
+            <MessageSquare className="h-5 w-5" />
+            Contact Messages
+          </Link>
         </nav>
 
         {/* Language Selector */}
@@ -358,6 +366,12 @@ const AdminDashboard: React.FC = () => {
                   <Button variant="outline" className="w-full justify-start gap-2">
                     <Users className="h-4 w-4" />
                     {t('manage_bookings')}
+                  </Button>
+                </Link>
+                <Link to="/admin/contact-submissions">
+                  <Button variant="outline" className="w-full justify-start gap-2">
+                    <MessageSquare className="h-4 w-4" />
+                    Contact Messages
                   </Button>
                 </Link>
               </div>

@@ -19,6 +19,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminTours from "./pages/admin/AdminTours";
 import AdminTourForm from "./pages/admin/AdminTourForm";
 import AdminBookings from "./pages/admin/AdminBookings";
+import ContactSubmissionsPage from "./pages/admin/ContactSubmissionsPage";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,7 @@ const App = () => (
                 <Route path="/admin/tours/new" element={<ProtectedRoute><AdminTourForm /></ProtectedRoute>} />
                 <Route path="/admin/tours/:id/edit" element={<ProtectedRoute><AdminTourForm /></ProtectedRoute>} />
                 <Route path="/admin/bookings" element={<ProtectedRoute><AdminBookings /></ProtectedRoute>} />
+                <Route path="/admin/contact-submissions" element={<ProtectedRoute><ContactSubmissionsPage /></ProtectedRoute>} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
