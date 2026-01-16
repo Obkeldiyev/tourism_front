@@ -30,7 +30,7 @@ Added **25+ new translation keys** to `LanguageContext.tsx`:
 #### **About Page Translations:**
 ```typescript
 about_subtitle: { 
-  uz: "Qaraqalpaqstanning boy madaniy merosini va noyob tabiiy go'zalligini kashf eting", 
+  uz: "Qoraqalpog'istonning boy madaniy merosini va noyob tabiiy go'zalligini kashf eting", 
   ru: "Откройте богатое культурное наследие и уникальную природную красоту Каракалпакстана", 
   en: "Discover the rich cultural heritage and unique natural beauty of Karakalpakstan", 
   kaa: "Qaraqalpaqstannıń bay mádeni murasın hám noyob tábiyiy gózalligin ashıń" 
@@ -47,7 +47,7 @@ about_text3: { /* Full paragraph translations in all 4 languages */ },
 
 #### **Contact Page Translations:**
 ```typescript
-contact_subtitle: { uz: "Mukammal Qaraqalpaqstan sarguzashtingizni rejalashtirish uchun biz bilan bog'laning", ru: "Свяжитесь с нами, чтобы спланировать ваше идеальное приключение в Каракалпакстане", en: "Get in touch with us to plan your perfect Karakalpakstan adventure", kaa: "Mukemmel Qaraqalpaqstan maceraıńızdı josparlawǵa biz benen baylanısıń" },
+contact_subtitle: { uz: "Mukammal Qoraqalpog'iston sarguzashtingizni rejalashtirish uchun biz bilan bog'laning", ru: "Свяжитесь с нами, чтобы спланировать ваше идеальное приключение в Каракалпакстане", en: "Get in touch with us to plan your perfect Karakalpakstan adventure", kaa: "Mukemmel Qaraqalpaqstan maceraıńızdı josparlawǵa biz benen baylanısıń" },
 contact_get_in_touch: { uz: "Bog'lanish", ru: "Связаться с нами", en: "Get in Touch", kaa: "Baylanısıw" },
 contact_address: { uz: "Manzil", ru: "Адрес", en: "Address", kaa: "Mánzil" },
 contact_phone: { uz: "Telefon", ru: "Телефон", en: "Phone", kaa: "Telefon" },

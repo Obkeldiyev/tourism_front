@@ -26,7 +26,7 @@ const Destinations: React.FC = () => {
       subtitle: {
         en: 'Capital of Karakalpakstan',
         ru: 'Столица Каракалпакстана',
-        uz: 'Qaraqalpaqstan poytaxti',
+        uz: "Qoraqalpog'iston poytaxti",
         kaa: 'Qaraqalpaqstannıń paytaxtı',
       },
       description: {

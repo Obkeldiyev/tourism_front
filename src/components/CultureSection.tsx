@@ -10,13 +10,13 @@ const CultureSection: React.FC = () => {
     title: {
       en: 'Experience Karakalpak Culture',
       ru: 'Познакомьтесь с каракалпакской культурой',
-      uz: 'Qaraqalpaq madaniyatini his eting',
+      uz: 'Qoraqalpoq madaniyatini his eting',
       kaa: 'Qaraqalpaq mádenyetin sezinin',
     },
     subtitle: {
       en: 'Immerse yourself in centuries-old traditions, flavors, and hospitality of Karakalpakstan',
       ru: 'Погрузитесь в многовековые традиции, вкусы и гостеприимство Каракалпакстана',
-      uz: 'Qaraqalpaqstanning asrlar davomida shakllangan an\'analar, ta\'mlar va mehmondo\'stlikka cho\'ming',
+      uz: 'Qoraqalpogistanning asrlar davomida shakllangan an\'analar, ta\'mlar va mehmondo\'stlikka cho\'ming',
       kaa: 'Qaraqalpaqstannıń ásirler dawamında payda bolğan dástúrler, tá\'mler hám miymandoslıqtı sezinin',
     },
     cuisine: {
