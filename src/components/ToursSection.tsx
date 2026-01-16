@@ -20,7 +20,7 @@ const sampleTours: Tour[] = [
     title_kaa: 'Nukus hám Savitskiy muzeyın ashıń',
     description_en: 'Explore the capital of Karakalpakstan and visit the world-famous Savitsky Museum with its incredible collection of Russian avant-garde art.',
     description_ru: 'Исследуйте столицу Каракалпакстана и посетите всемирно известный музей Савицкого с его невероятной коллекцией русского авангардного искусства.',
-    description_uz: 'Qaraqalpaqstan poytaxtini o\'rganing va rus avangard san\'atining ajoyib to\'plami bilan mashhur Savitskiy muzeyiga tashrif buyuring.',
+    description_uz: 'Qoraqalogiston poytaxtini o\'rganing va rus avangard san\'atining ajoyib to\'plami bilan mashhur Savitskiy muzeyiga tashrif buyuring.',
     description_kaa: 'Qaraqalpaqstannıń paytaxtın úyreniń hám rus avangard óneriniń keremetli jıynağı menen máshhur Savitskiy muzeyına barıń.',
     breakfast: true,
     lunch: true,

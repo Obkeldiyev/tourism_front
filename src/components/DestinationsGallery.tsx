@@ -21,7 +21,7 @@ const DestinationsGallery: React.FC = () => {
       description: {
         en: 'Capital of Karakalpakstan, home to the world-famous Savitsky Museum',
         ru: 'Столица Каракалпакстана, дом всемирно известного музея Савицкого',
-        uz: 'Qaraqalpaqstan poytaxti, dunyoga mashhur Savitskiy muzeyining joyi',
+        uz: 'Qoraqalpogiston poytaxti, dunyoga mashhur Savitskiy muzeyining joyi',
         kaa: 'Qaraqalpaqstannıń paytaxtı, dúnyaǵa máshhur Savitskiy muzeyiniń orını',
       },
     },
@@ -67,7 +67,7 @@ const DestinationsGallery: React.FC = () => {
   const sectionSubtitle = {
     en: 'Discover the unique landscapes and culture of Karakalpakstan',
     ru: 'Откройте для себя уникальные пейзажи и культуру Каракалпакстана',
-    uz: 'Qaraqalpaqstanning noyob manzaralari va madaniyatini kashf eting',
+    uz: 'Qoraqalpogistonning noyob manzaralari va madaniyatini kashf eting',
     kaa: 'Qaraqalpaqstannıń noyob mánzeraları hám mádeniyet ashıń',
   };
 

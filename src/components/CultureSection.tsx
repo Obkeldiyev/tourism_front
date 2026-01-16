@@ -29,7 +29,7 @@ const CultureSection: React.FC = () => {
       description: {
         en: 'Taste the traditional fish dishes from the Aral Sea, beshbarmak, and other Karakalpak specialties prepared with ancient recipes.',
         ru: 'Попробуйте традиционные рыбные блюда Аральского моря, бешбармак и другие каракалпакские деликатесы по древним рецептам.',
-        uz: 'Orol dengizining an\'anaviy baliq taomlari, beshbarmaq va boshqa qaraqalpaq taomlarini tatib ko\'ring.',
+        uz: 'Orol dengizining an\'anaviy baliq taomlari, beshbarmaq va boshqa qoraqalpoq taomlarini tatib ko\'ring.',
         kaa: 'Aral teńiziniń dástúriy balıq tağamları, beshbarmaq hám basqa qaraqalpaq tağamlarınan tatıń.',
       },
     },

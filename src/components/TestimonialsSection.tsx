@@ -40,7 +40,7 @@ const TestimonialsSection: React.FC = () => {
       text: {
         en: 'The Aral Sea ship graveyard was both haunting and fascinating. Our guide explained the ecological history beautifully. The Karakalpak hospitality was unforgettable.',
         ru: 'Кладбище кораблей Аральского моря было одновременно жутким и завораживающим. Наш гид прекрасно объяснил экологическую историю. Каракалпакское гостеприимство незабываемо.',
-        uz: 'Orol dengizining kema qabristoni ham dahshatli, ham jozibali edi. Gidimiz ekologik tarixni ajoyib tushuntirdi. Qaraqalpaq mehmondo\'stligi unutilmas.',
+        uz: 'Orol dengizining kema qabristoni ham dahshatli, ham jozibali edi. Gidimiz ekologik tarixni ajoyib tushuntirdi Qoraqalpoq mehmondo\'stligi unutilmas.',
         kaa: 'Aral teńiziniń keme qábiristanı hám qorqınısh, hám qızıqlı edi. Gidimiz ekologiyalıq tariyxtı keremetley túsindirdi. Qaraqalpaq miymandoslığı umıtılmas.',
       },
       rating: 5,

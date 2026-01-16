@@ -32,7 +32,7 @@ const Destinations: React.FC = () => {
       description: {
         en: 'Nukus, the capital of Karakalpakstan, is home to the world-famous Savitsky Museum, one of the largest collections of Russian avant-garde art. The city serves as a gateway to the Aral Sea region and showcases the unique Karakalpak culture and heritage.',
         ru: 'Нукус, столица Каракалпакстана, является домом для всемирно известного музея Савицкого, одной из крупнейших коллекций русского авангардного искусства. Город служит воротами в регион Аральского моря и демонстрирует уникальную каракалпакскую культуру и наследие.',
-        uz: 'Nukus, Qaraqalpaqstan poytaxti, dunyoga mashhur Savitskiy muzeyining joylashgan o\'rni bo\'lib, rus avangard san\'atining eng katta to\'plamlaridan biridir. Shahar Orol dengizi hududiga kirish eshigi vazifasini o\'taydi va noyob qaraqalpaq madaniyati va merosini namoyish etadi.',
+        uz: 'Nukus, Qoraqalpogiston poytaxti, dunyoga mashhur Savitskiy muzeyining joylashgan o\'rni bo\'lib, rus avangard san\'atining eng katta to\'plamlaridan biridir. Shahar Orol dengizi hududiga kirish eshigi vazifasini o\'taydi va noyob qaraqalpaq madaniyati va merosini namoyish etadi.',
         kaa: 'Nukus, Qaraqalpaqstannıń paytaxtı, dúnyaǵa máshhur Savitskiy muzeyi orınlasqan jer bolıp, rus avangard óneriniń eń úlken jıynaqlarından biri. Qala Aral teńizi aymağına kiriw esigi wazıypasın atqarıp, noyob qaraqalpaq mádeniyet hám murasın kórsetedi.',
       },
       highlights: [
@@ -45,7 +45,7 @@ const Destinations: React.FC = () => {
         {
           en: 'Karakalpak State Museum - Regional history and culture',
           ru: 'Каракалпакский государственный музей - Региональная история и культура',
-          uz: 'Qaraqalpaq davlat muzeyi - Mintaqaviy tarix va madaniyat',
+          uz: 'Qoraqalpoq davlat muzeyi - Mintaqaviy tarix va madaniyat',
           kaa: 'Qaraqalpaq memleket muzeyi - Aymaq tariyxı hám mádeniyet',
         },
         {
@@ -154,7 +154,7 @@ const Destinations: React.FC = () => {
       description: {
         en: 'Mizdakhan is one of the most significant archaeological sites in Karakalpakstan, featuring ancient burial grounds that span over 2,000 years of history. This sacred site includes mausoleums, ancient fortifications, and legends that connect it to biblical and Islamic traditions. It\'s considered one of the most important pilgrimage sites in the region.',
         ru: 'Миздахан - один из самых значительных археологических памятников Каракалпакстана, включающий древние захоронения, охватывающие более 2000 лет истории. Это священное место включает мавзолеи, древние укрепления и легенды, связывающие его с библейскими и исламскими традициями. Считается одним из важнейших мест паломничества в регионе.',
-        uz: 'Mizdaxon Qaraqalpaqstanning eng muhim arxeologik yodgorliklaridan biri bo\'lib, 2000 yildan ortiq tarixni qamrab olgan qadimiy dafn joylarini o\'z ichiga oladi. Bu muqaddas joy maqbaralar, qadimiy istehkomlar va uni bibliya va islom an\'analariga bog\'laydigan afsonalarni o\'z ichiga oladi. Mintaqadagi eng muhim ziyorat joylaridan biri hisoblanadi.',
+        uz: 'Mizdaxon Qoraqalpoqistonning eng muhim arxeologik yodgorliklaridan biri bo\'lib, 2000 yildan ortiq tarixni qamrab olgan qadimiy dafn joylarini o\'z ichiga oladi. Bu muqaddas joy maqbaralar, qadimiy istehkomlar va uni bibliya va islom an\'analariga bog\'laydigan afsonalarni o\'z ichiga oladi. Mintaqadagi eng muhim ziyorat joylaridan biri hisoblanadi.',
         kaa: 'Mizdaxan Qaraqalpaqstannıń eń muhim arxeologiyalıq eskertkishlerinen biri bolıp, 2000 jıldan artıq tariyxnı qamrap alǧan qadimgi defin jerlerin óz ishine aladı. Bul muqaddas jer maqbaralar, qadimgi qorǧanlar hám onı bibliya hám islam dástúrlerine baylanıstıratırǧan ertekler óz ishine aladı. Aymaqtağı eń muhim zıyarat jerlerinen biri esaplanadı.',
       },
       highlights: [
